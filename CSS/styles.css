@@ -1,0 +1,146 @@
+/* styles.css - Custom Agronomic UI Styling */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #15803d;
+  --primary-light: #22c55e;
+  --primary-dark: #166534;
+  --accent: #eab308;
+  --earth: #78350f;
+  --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #fefce8 100%);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-gradient);
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Glassmorphic Cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+.glass-panel-accent {
+  background: linear-gradient(135deg, rgba(240, 253, 244, 0.9) 0%, rgba(254, 252, 232, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(187, 247, 208, 0.8);
+}
+
+/* Custom Range Sliders */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #16a34a;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #15803d;
+}
+
+/* pH Color Gauge Dynamic Bar */
+.ph-gauge-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ef4444 0%, #f97316 25%, #eab308 40%, #22c55e 50%, #3b82f6 75%, #8b5cf6 100%);
+}
+
+/* Crop Score Ring Animation */
+.confidence-badge {
+  background: radial-gradient(circle at top left, #22c55e, #15803d);
+  color: white;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+
+/* Voice Speaking Wave Animation */
+.speaking-wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+}
+
+.speaking-wave span {
+  width: 3px;
+  height: 100%;
+  background-color: #22c55e;
+  border-radius: 3px;
+  animation: waveAnim 1s infinite ease-in-out;
+}
+
+.speaking-wave span:nth-child(2) { animation-delay: 0.2s; }
+.speaking-wave span:nth-child(3) { animation-delay: 0.4s; }
+.speaking-wave span:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes waveAnim {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+/* Smooth Tab & Modal Transitions */
+.tab-pane {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tab-pane.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Crop Card Hover Effects */
+.crop-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.crop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Tooltip badge */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Print optimizations */
+@media print {
+  body { background: white !important; }
+  .no-print { display: none !important; }
+  .glass-panel { box-shadow: none !important; border: 1px solid #cbd5e1 !important; }
+}
